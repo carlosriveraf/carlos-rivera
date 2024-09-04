@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id('order_id');
-            $table->string('nro_pedido');
+            $table->string('nro_pedido')->unique();
             $table->timestamp('fecha_pedido');
             $table->timestamp('fecha_recepcion');
             $table->timestamp('fecha_despacho');
