@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id('order_id');
             $table->string('nro_pedido')->unique();
-            $table->timestamp('fecha_pedido');
-            $table->timestamp('fecha_recepcion');
-            $table->timestamp('fecha_despacho');
-            $table->timestamp('fecha_entrega');
+            $table->timestamp('fecha_pedido')->useCurrent();
+            $table->timestamp('fecha_recepcion')->nullable();
+            $table->timestamp('fecha_despacho')->nullable();
+            $table->timestamp('fecha_entrega')->nullable();
             $table->unsignedBigInteger('id_vendedor');
             $table->unsignedBigInteger('id_repartidor');
             $table->unsignedBigInteger('estado');

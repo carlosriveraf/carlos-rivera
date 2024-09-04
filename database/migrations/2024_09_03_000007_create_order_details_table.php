@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id');
             $table->string('sku');
             $table->string('nombre');
+            $table->float('cantidad');
             $table->float('precio');
             $table->string('unidad_medida');
             $table->timestamps();

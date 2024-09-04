@@ -28,7 +28,7 @@ class ProductFactory extends Factory
             'sku' => fake()->unique()->regexify('PROD-[0-9]{3}'),
             'nombre' => fake()->word,
             'tipo' => fake()->randomElement(['Grano', 'Legumbre', 'Aceite', 'Lácteo', 'Bebida']),
-            'etiquetas' => implode(',', fake()->words(3, true)),
+            'etiquetas' => implode(',', fake()->words(3)),
             'precio' => fake()->randomFloat(2, 1, 100),
             'unidad_medida' => fake()->randomElement(['kg', 'litro', 'unidad']),
             'created_at' => now(),
