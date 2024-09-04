@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,6 +17,7 @@ class AuthController extends Controller
             'password' => 'required|string'
         ]);
 
+        /** @var User $user */
         $user = User::where('email', $data['email'])->first();
 
         if (!$user || !Hash::check($data['password'], $user->password)) {
@@ -24,7 +26,7 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $token = $user->createToken('apiToken')->plainTextToken;
+        $token = $user->createToken('apiToken', ['*'], Carbon::now()->addHours(2))->plainTextToken;
 
         $res = [
             'token' => $token,
