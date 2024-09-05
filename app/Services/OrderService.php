@@ -33,7 +33,6 @@ class OrderService
         }
 
         return Order::where('order_id', $order->order_id)->first();
-        return $order;
     }
 
     public function changeOrderStatus(ChangeOrderStatusData $body): bool
